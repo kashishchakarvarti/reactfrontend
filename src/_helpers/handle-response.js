@@ -1,6 +1,6 @@
 import { authenticationService } from '@/_services';
 
-export function handleResponse(response) { console.log(2323232,response)
+export function handleResponse(response) {
     return response.text().then(text =>  {
         const data = (isJson(text))? JSON.parse(text) : 'something went wrong'
         if (!response.ok) {
@@ -15,7 +15,6 @@ export function handleResponse(response) { console.log(2323232,response)
             const error = (data && data.message) || 'validation error';
             return Promise.reject(error);
         }
-        console.log(23223,data)
         return data;
     });
 }
