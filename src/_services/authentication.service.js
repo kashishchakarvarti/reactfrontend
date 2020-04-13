@@ -1,19 +1,13 @@
 import { BehaviorSubject } from 'rxjs';
 
 import config from 'config';
-import { handleResponse } from '@/_helpers';
+import { authHeader, handleResponse } from '@/_helpers';
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
-export const authenticationService = {
-    login,
-    logout,
-    register,
-    currentUser: currentUserSubject.asObservable(),
-    get currentUserValue () { return currentUserSubject.value }
-};
 
-function register(username, password) {
+
+const register = (username, password) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -27,7 +21,7 @@ function register(username, password) {
         });
 }
 
-function login(username, password) {
+const login = (username, password) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,8 +39,18 @@ function login(username, password) {
         });
 }
 
-function logout() {
+const logout = () => {
     // remove user from local storage to log user out
+
     localStorage.removeItem('currentUser');
     currentUserSubject.next(null);
+
 }
+
+export const authenticationService = {
+    login,
+    logout,
+    register,
+    currentUser: currentUserSubject.asObservable(),
+    get currentUserValue() { return currentUserSubject.value }
+};

@@ -6,6 +6,12 @@ export const userService = {
 };
 
 function getAll() {
+    console.log(1,authHeader())
     const requestOptions = { method: 'GET', headers: authHeader() };
-    return fetch(`${config.apiUrl}/dashboard`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/dashboard`, requestOptions)
+    .then(handleResponse)
+    .then(data => {
+           
+            return data;
+    });
 }
