@@ -24,6 +24,9 @@ class App extends React.Component {
         authenticationService.logout();
         history.push('/login');
     }
+    register() {
+        history.push('/register');
+    }
 
     render() {
         const { currentUser } = this.state;
@@ -33,7 +36,7 @@ class App extends React.Component {
                     {currentUser &&
                         <nav className="navbar navbar-expand navbar-dark bg-dark">
                             <div className="navbar-nav">
-                                <Link to="/" className="nav-item nav-link">Home</Link>
+                                <a onClick={this.register} className="nav-item nav-link">Refresh</a>
                                 <a onClick={this.logout} className="nav-item nav-link">Logout</a>
                             </div>
                         </nav>

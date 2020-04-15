@@ -31,8 +31,8 @@ class LoginPage extends React.Component {
                                 confirm: ''
                             }}
                             validationSchema={Yup.object().shape({
-                                username: Yup.string().required('Username is required'),
-                                password: Yup.string().required('Password is required'),
+                                username: Yup.string().min(2).required('Username is required'),
+                                password: Yup.string().min(4).matches(/(?=.*\d)(?=.*[A-Z]).*/).required('Password is required'),
                                 confirm: Yup.string().required('Confirm Password is required'),
                             })}
                             onSubmit={({ username, password, confirm }, { setStatus, setSubmitting }) => {

@@ -20,7 +20,7 @@ class HomePage extends React.Component {
         const { currentUser, users } = this.state;
         return (
             <div>
-                {/* <h1>Hi {currentUser.firstName}!</h1> */}
+    
                 <h3>Top News Feeds:</h3>
                 {users &&
                     <ul>
