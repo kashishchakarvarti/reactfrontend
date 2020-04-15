@@ -13,7 +13,7 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        userService.getAll().then(users => this.setState({users: users.data.news[0] }));
+        userService.getAll().then(users => this.setState({users: users.data.news }));
     }
 
     render() {
